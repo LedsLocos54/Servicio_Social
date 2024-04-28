@@ -11,7 +11,7 @@ MSD_1=19#motor superior derecha 1
 MSD_2=26#motor superior derecha 2
 MII_1=18#motor inferior izquierda 1
 MII_2=23#motor inferior izquierda 2
-MID 1=12#motor inferior derecha 1
+MID_1=12#motor inferior derecha 1
 MID_2=16#motor inferior derecha 2
 
 #entradas y salidas
