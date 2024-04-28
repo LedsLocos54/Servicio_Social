@@ -1,0 +1,204 @@
+from pyPS4Controller.controller import Controller 
+import RPi. GPIO as GPIO
+import time
+
+#Modo de trabajo BCM
+GPIO.setmode (GPIO.BCM)
+
+MSI_1=13#motor superior izquierda 1
+MSI_2=6#motor superior izquierda dos
+MSD_1=19#motor superior derecha 1
+MSD_2=26#motor superior derecha 2
+MII_1=18#motor inferior izquierda 1
+MII_2=23#motor inferior izquierda 2
+MID 1=12#motor inferior derecha 1
+MID_2=16#motor inferior derecha 2
+
+#entradas y salidas
+GPIO.setup(MSI_1, GPIO.OUT)
+GPIO.setup(MSI_2, GPIO.OUT)
+GPIO.setup(MSD_1, GPIO.OUT)
+GPIO.setup(MSD_2, GPIO.OUT)
+GPIO.setup(MII_1, GPIO.OUT)
+GPIO.setup(MII_2, GPIO.OUT)
+GPIO.setup(MID_1, GPIO.OUT)
+GPIO.setup(MID_2, GPIO.OUT)
+#GPIO.setup(Pulsador, GPIO.OUT)
+
+class MyController (Controller):
+  def on_x_press(self):
+    print("Videos :0")
+    #videos
+ 
+def on_up_arrow_press(self):
+    #avanzo adelante
+    #adelante con motor superior izquierdo 
+      GPIO.output(MSI_1, GPIO.HIGH)
+      GPIO.output(MSI_2, GPIO.LOW)
+    #adelante con motor superior derecho
+      GPIO.output(MSD_1, GPIO.HIGH)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #adelante con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.HIGH)
+      GPIO.output(MII_2, GPIO.LOW)
+    #adelante con motor inferior derecho
+      GPIO.output(MID_1, GPIO.HIGH)
+      GPIO.output(MID_2, GPIO.LOW)
+
+  def on_down_arrow_press(self):#avanzo atras
+    #atras con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2, GPIO.HIGH)
+    #atras con motor superior derecho
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.HIGH)
+    #atras con motor inferior izquierdo 
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.HIGH)
+    #atras con motor inferior derecho
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.HIGH)
+
+  def on_right_arrow_press(self): #avanzo cangrejo derecha
+    #adelante con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.HIGH)
+      GPIO.output(MSI_2, GPIO.LOW)
+    #atras con motor superior derecho
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.HIGH)
+    #atras con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.HIGH)
+    #adelante con motor inferior derecho
+      GPIO.output(MID_1, GPIO.HIGH)
+      GPIO.output(MID_2, GPIO.LOW)
+
+  def on_left_arrow_press(self): #avanzo cangrejo izquierda
+    #atras con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2, GPIO.HIGH)
+    #adelante con motor superior derecho
+      GPIO.output(MSD_1, GPIO.HIGH)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #adelante con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.HIGH)
+      GPIO.output(MII_2, GPIO.LOW)
+    #atras con motor inferior derecho 
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.HIGH) 
+
+  def on_L3_press(self ): #giro izquierda
+    #adelante con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.HIGH)
+      GPIO.output(MSI_2, GPIO.LOW)
+    #atras con motor superior derecho 
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.HIGH)
+    #adelante con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.HIGH)
+      GPIO.output(MII_2, GPIO.LOW)
+    #atras con motor inferior derecho
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.HIGH)
+
+  def on_R3_press(self):#giro derecha
+    #atras con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2, GPIO.HIGH)
+    #adelante con motor superior derecho
+      GPIO.output(MSD_1, GPIO.HIGH)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #atras con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.HIGH)
+    #adelante con motor inferior derecho
+      GPIO.output(MID_1, GPIO.HIGH)
+      GPIO.output(MID_2, GPIO.LOW)
+
+  def on_up_arrow_release(self ): #Parar todo
+    #frena con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2. GPIO.LOW)
+    #frena con motor superior derecho
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #frena con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.LOW)
+    #frena motor inferior derecho
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.LOW)
+
+  def on_down_arrow_release(self): #Parar todo
+    #frena con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2. GPIO.LOW)
+    #frena con motor superior derecho
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #frena con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.LOW)
+    #frena motor inferior derecho
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.LOW)
+
+def on_right_arrow_release(self): #parar todo
+    #frena con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2. GPIO.LOW)
+    #frena con motor superior derecho
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #frena con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.LOW)
+    #frena motor inferior derecho
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.LOW)
+
+def on_left_arrow_release(self): #Parar todo
+    #frena con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2. GPIO.LOW)
+    #frena con motor superior derecho
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #frena con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.LOW)
+    #frena motor inferior derecho
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.LOW)
+
+def on_L3_release(self): #Parar todo
+    #frena con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2. GPIO.LOW)
+    #frena con motor superior derecho
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #frena con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.LOW)
+    #frena motor inferior derecho
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.LOW)
+
+def on_R3_release(self): #Parar todo
+    #frena con motor superior izquierdo
+      GPIO.output(MSI_1, GPIO.LOW)
+      GPIO.output(MSI_2. GPIO.LOW)
+    #frena con motor superior derecho
+      GPIO.output(MSD_1, GPIO.LOW)
+      GPIO.output(MSD_2, GPIO.LOW)
+    #frena con motor inferior izquierdo
+      GPIO.output(MII_1, GPIO.LOW)
+      GPIO.output(MII_2, GPIO.LOW)
+    #frena motor inferior derecho
+      GPIO.output(MID_1, GPIO.LOW)
+      GPIO.output(MID_2, GPIO.LOW)
+
+controller = MyController(interface="/dev/input/js0", connecting_using_ds4drv=False)
+# you can start listening before controller is paired, as long as you pair it within the timeout window
+controller.listen(timeout=60)
